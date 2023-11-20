@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+]<!DOCTYPE html>
 {% load static %}
 <html lang="en" dir="ltr">
 
@@ -17,29 +17,13 @@
 
     .jumbotron h1 {
       text-align: center;
+      color: #557C55; /* Set text color to #557C55 */
+      font-size: 48px; /* Adjust font size as needed */
+       /* Set font weight to bold */
     }
 
     .alert {
       margin: 0px;
-    }
-
-
-
-    .glow {
-      font-size: 70px;
-      color: #ffffff;
-      text-align: center;
-    }
-
-
-    @-webkit-keyframes glow {
-      from {
-        text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
-      }
-
-      to {
-        text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-      }
     }
   </style>
 
@@ -51,17 +35,11 @@
   <br>
   <div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px;">
     <br>
+    <h1 class="display-4">Welcome</h1>
 
-    <br><br>
     <br><br><br><br><br>
     <p class="lead">
-      <br>
-      <br>
-      <br>
-      <p class = "display-4 glow">Welcome</p>
-      <br>
-      <a class="btn btn-primary btn-lg glow" href="/studentsignup" role="button">Take Admission</a>
-      <br><br><br><br><br>
+      <a class="btn btn-primary btn-lg" href="/studentsignup" role="button">Take Admission</a>
     </p>
     <br><br>
   </div>
