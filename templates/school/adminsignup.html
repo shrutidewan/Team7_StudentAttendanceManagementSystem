@@ -48,6 +48,19 @@
     }
   </style>
 
+  <script>
+    function validateForm() {
+      var firstName = document.getElementById("id_first_name").value;
+      var lastName = document.getElementById("id_last_name").value;
+
+      if (!firstName || !lastName) {
+        alert("Please fill in both the First Name and Last Name fields.");
+        return false; // Prevent form submission
+      }
+
+      return true; // Allow form submission
+    }
+  </script>
 </head>
 
 
@@ -58,11 +71,8 @@
   <br>
   <br>
 
-
-
-
   <!--- signup page for teacher by admin  ---------->
-  <form method="post">
+  <form method="post" onsubmit="return validateForm();">
     {% csrf_token %}
     <div class="container register-form">
       <div class="form">
@@ -98,10 +108,6 @@
     </div>
 
   </form>
-
-
-
-
 
   {% include "school/footer.html" %}
 </body>
