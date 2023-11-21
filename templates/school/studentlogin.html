@@ -49,10 +49,16 @@
     }
   </style>
 
-
-
-
-
+  <script>
+    function validateForm() {
+      var username = document.getElementById("id_username").value;
+      if (username.trim() === "") {
+        alert("Please enter your username");
+        return false;
+      }
+      return true;
+    }
+  </script>
 
 </head>
 
@@ -63,7 +69,7 @@
   <br><br>
 
   <!--- signup page for teacher by admin  ---------->
-  <form method="post">
+  <form method="post" onsubmit="return validateForm()">
     {% csrf_token %}
     <div class="container register-form">
       <div class="form">
@@ -76,7 +82,7 @@
             <div class="col-md-6">
 
               <div class="form-group">
-                {% render_field form.username class="form-control" placeholder="Username" %}
+                {% render_field form.username id="id_username" class="form-control" placeholder="Username" %}
               </div>
 
             </div>
@@ -89,7 +95,7 @@
             </div>
           </div>
           <button type="submit" class="btnSubmit">Login</button>
-          <div class="text-center">Do not have account? <a href="studentsignup">Signup here</a></div>
+          <div class="text-center">Do not have an account? <a href="studentsignup">Signup here</a></div>
         </div>
       </div>
     </div>
