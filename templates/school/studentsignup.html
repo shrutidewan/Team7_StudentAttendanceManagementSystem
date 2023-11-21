@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 {% load widget_tweaks %}
 <html lang="en" dir="ltr">
 
@@ -50,7 +49,6 @@
 
 </head>
 
-
 <body>
   {% include "school/navbar.html" %}
   <br>
@@ -58,11 +56,8 @@
   <br>
   <br>
 
-
-
-
   <!--- signup page for teacher by admin  ---------->
-  <form method="post">
+  <form method="post" onsubmit="return validateForm()">
     {% csrf_token %}
     <div class="container register-form">
       <div class="form">
@@ -74,7 +69,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                {% render_field form1.first_name class="form-control" placeholder="First Name" %}
+                {% render_field form1.first_name id="id_first_name" class="form-control" placeholder="First Name" %}
               </div>
               <div class="form-group">
                 {% render_field form1.username class="form-control" placeholder="Username" %}
@@ -83,13 +78,13 @@
                 {% render_field form2.cl class="form-control" placeholder="Class" %}
               </div>
               <div class="form-group">
-                {% render_field form2.mobile class="form-control" placeholder="Mobile" %}
+                <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Mobile" oninput="validateMobile()">
               </div>
 
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                {% render_field form1.last_name class="form-control" placeholder="Last Name" %}
+                {% render_field form1.last_name id="id_last_name" class="form-control" placeholder="Last Name" %}
               </div>
               <div class="form-group">
                 {% render_field form1.password class="form-control" placeholder="Password" %}
@@ -111,12 +106,26 @@
 
   </form>
 
+  <script>
+    function validateForm() {
+      var firstName = document.getElementById("id_first_name").value;
+      var lastName = document.getElementById("id_last_name").value;
+      var mobileInput = document.getElementById("mobile");
 
+      if (firstName.trim() === "" || lastName.trim() === "") {
+        alert("Please enter both first name and last name.");
+        return false;
+      }
 
+      if (mobileInput.value.length > 10) {
+        alert("Please enter a valid mobile number with 10 digits or less.");
+        mobileInput.value = mobileInput.value.slice(0, 10); // Truncate to 10 digits
+        return false;
+      }
 
-
-
-
+      return true;
+    }
+  </script>
 
   {% include "school/footer.html" %}
 </body>
